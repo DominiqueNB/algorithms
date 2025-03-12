@@ -19,17 +19,20 @@ import Foundation
  Only one valid answer exists. */
 
 class Solution {
-    func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
-        var savedIndex = 0
-        for (index, element) in nums.enumerated() {
-            if nums[savedIndex] + element == target && savedIndex != index {
-                return [savedIndex, index]
-            } else {
-                savedIndex = index
-            }
-        }
-        return []
-    }
+   func twoSum(_ nums: [Int], _ target: Int) -> [Int] {
+       var firstIndex = 0
+       var savedIndex = 0
+       for (index, element) in nums.enumerated() {
+           if nums[savedIndex] + element == target && savedIndex != index {
+               return [savedIndex, index]
+           } else if nums[firstIndex] + element == target && firstIndex != index {
+               return [firstIndex, index]
+           } else {
+               savedIndex = index
+           }
+       }
+       return []
+   }
 }
 
 let case1 = Solution().twoSum([2,7,11,15], 9)
